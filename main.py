@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-input_size = 2
-hidden_size = 4
-output_size = 2
-learning_rate = 0.01
-momentum_rate = 0.9
+input_size = 8
+hidden_size = 16
+output_size = 1
+learning_rate = 0.07
+momentum_rate = 0.1
 epochs = 10000
 epsilon = 1e-4
 num_folds = 10
@@ -264,7 +264,7 @@ def graphe_confusion_matrix(TP, TN, FP, FN):
     plt.show()
 
 
-data_table = read_data_from_text_file("cross.txt")
+data_table = read_data_from_text_file("shuffled_data.txt")
 Max, Min = FindMaxMin(data_table)
 normalized_data = normalize_data(data_table, Max, Min)
 X_train, Y_train = setxy(normalized_data)
@@ -277,13 +277,17 @@ denormalized_predicted_output = np.squeeze(denormalized_predicted_output)
 #denormalized_y = denormalized_y[:, np.newaxis]
 print(round_matrix(denormalized_predicted_output))
 #print(denormalized_y)
-#ShowGraph(denormalized_predicted_output,denormalized_y)
+ShowGraph(denormalized_predicted_output,denormalized_y)
+
+#### cross
+
 #accuracy = calculate_percentage_error(denormalized_y, denormalized_predicted_output)
 #print(f"ความแม่นยำ: {accuracy :.2f}%")
 #print(mse_scores)
-#denormalized_y = np.squeeze(denormalized_y)
-TP, TN, FP, FN,accuracy = confusion_matrix(denormalized_predicted_output, denormalized_y)
-print(f"ความแม่นยำ: {accuracy:.2f}%")
-
-graphe_confusion_matrix(TP, TN, FP, FN)
-#print("ความแม่นยำ",compare_matrices(denormalized_predicted_output, denormalized_y, data_table))
+#data_table = read_data_from_text_file("cross.txt")
+#Max, Min = FindMaxMin(data_table)
+#normalized_data = normalize_data(data_table, Max, Min)
+#X_train, Y_train = setxy(normalized_data)
+#TP, TN, FP, FN,accuracy = confusion_matrix(denormalized_predicted_output, denormalized_y)
+#print(f"ความแม่นยำ: {accuracy:.2f}%")
+#graphe_confusion_matrix(TP, TN, FP, FN)
