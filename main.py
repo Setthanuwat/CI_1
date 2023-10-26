@@ -1,8 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from IPython.display import clear_output
-from sklearn.metrics import confusion_matrix
-import seaborn as sns
 
 input_size = 2
 hidden_size = 4
